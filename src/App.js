@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import Header from "./components/Header";
 import Figure from "./components/Figure";
 import WrongLetters from "./components/WrongLetters";
@@ -51,7 +51,7 @@ function App() {
         <WrongLetters wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
       </div>
-      <Popup />
+      <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} />
       <Notification showNotification={showNotification} />
     </>
   );
