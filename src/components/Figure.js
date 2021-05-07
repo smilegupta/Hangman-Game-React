@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const Figure = ({ wrongLetters }) => {
+const Figure = memo(({ wrongLetters }) => {
   const errors = wrongLetters.length;
 
   return (
@@ -26,6 +26,6 @@ const Figure = ({ wrongLetters }) => {
       {errors > 5 && <line x1="140" y1="150" x2="160" y2="180" />}
     </svg>
   );
-};
+});
 
 export default Figure;

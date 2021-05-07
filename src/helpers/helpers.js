@@ -6,17 +6,12 @@ export function showNotification(setter) {
 }
 
 export function checkWin(correct, wrong, word) {
-  let status = "win";
-
-  // Check for win
-  word.split("").forEach((letter) => {
-    if (!correct.includes(letter)) {
-      status = "";
-    }
-  });
-
-  // Check for lose
-  if (wrong.length === 6) status = "lose";
-
-  return status;
+  if (wrong.length >= 6) {
+    return "lose";
+  }
+  // You win, if you enter all unique letters present in selected word
+  if (correct.length === new Set(word).size) {
+    return "win";
+  }
+  return "";
 }

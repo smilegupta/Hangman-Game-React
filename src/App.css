@@ -2,8 +2,10 @@
   box-sizing: border-box;
 }
 
-body, #root {
-  background-color: #34495e;
+body,
+#root {
+  /* background-color: #34495e; */
+  background-color: #335577;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -63,7 +65,7 @@ h1 {
 }
 
 .letter {
-  border-bottom: 3px solid #2980b9;
+  border-bottom: 3px solid #2baaff;
   display: inline-flex;
   font-size: 30px;
   align-items: center;
@@ -80,8 +82,7 @@ h1 {
   bottom: 0;
   left: 0;
   right: 0;
-  /* display: flex; */
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
 }

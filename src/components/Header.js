@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, memo } from "react";
 
-const Header = () => {
+const Header = memo(() => {
   return (
     <Fragment>
       <h1>Hangman</h1>
       <p>Find the hidden word - Enter a letter</p>
     </Fragment>
   );
-};
+});
 
 export default Header;

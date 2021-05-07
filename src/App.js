@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Header from "./components/Header";
 import Figure from "./components/Figure";
 import WrongLetters from "./components/WrongLetters";
@@ -6,7 +6,7 @@ import Word from "./components/Word";
 import Popup from "./components/Popup";
 import Notification from "./components/Notification";
 import "./App.css";
-import { showNotification as show } from "./helpers/helpers";
+import { showNotification as show, checkWin } from "./helpers/helpers";
 
 const words = ["application", "programming", "interface", "wizard"];
 
@@ -43,7 +43,7 @@ function App() {
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [correctLetters, wrongLetters, playable]);
 
-  function playAgain() {
+  const playAgain = useCallback(() => {
     setPlayable(true);
 
     // Empty Arrays
@@ -52,8 +52,9 @@ function App() {
 
     const random = Math.floor(Math.random() * words.length);
     selectedWord = words[random];
-  }
+  }, []);
 
+  const status = checkWin(correctLetters, wrongLetters, selectedWord);
   return (
     <>
       <Header />
@@ -62,14 +63,14 @@ function App() {
         <WrongLetters wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
       </div>
-      <Popup
-        correctLetters={correctLetters}
-        wrongLetters={wrongLetters}
-        selectedWord={selectedWord}
-        setPlayable={setPlayable}
-        playAgain={playAgain}
-      />
-      <Notification showNotification={showNotification} />
+      {status !== "" && (
+        <Popup
+          status={status}
+          selectedWord={selectedWord}
+          playAgain={playAgain}
+        />
+      )}
+      <Notification show={showNotification} />
     </>
   );
 }

@@ -1,19 +1,16 @@
-import React from "react";
+import React, { memo } from "react";
 
-const WrongLetters = ({ wrongLetters }) => {
+const WrongLetters = memo(({ wrongLetters }) => {
   return (
     <div className="wrong-letters-container">
       <div>
-        {wrongLetters.length > 0 && <p> Wrong </p>}
-        {wrongLetters
-          .map((letter, i) => <span key={i}> {letter} </span>)
-          .reduce(
-            (prev, curr) => (prev === null ? [curr] : [prev, ", ", curr]),
-            null
-          )}
+        <p> Wrong Attempts: {6 - wrongLetters.length} remaining </p>
+        {wrongLetters.map((letter, i) => (
+          <span key={i}> {letter} </span>
+        ))}
       </div>
     </div>
   );
-};
+});
 
 export default WrongLetters;

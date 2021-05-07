@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const Word = ({ selectedWord, correctLetters }) => {
+const Word = memo(({ selectedWord, correctLetters }) => {
   return (
     <div className="word">
       {selectedWord.split("").map((letter, i) => {
@@ -12,6 +12,6 @@ const Word = ({ selectedWord, correctLetters }) => {
       })}
     </div>
   );
-};
+});
 
 export default Word;
